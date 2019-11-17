@@ -13,7 +13,7 @@ script:
 
 deploy:
   privider: elasticbeanstalk
-  region: ""us-east-2
+  region: "us-east-2"
   app: "docker-react"
   env: "DockerReact-env"
   bucket_name: "elasticbeanstalk-us-east-2-355467072701"     #hard drive in AWS where travis upload it
