@@ -1,0 +1,12 @@
+#just used for development, to production we use the other Dockerfile
+#to run it... docker build -f Dockerfile.dev . 
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "run", "start"]

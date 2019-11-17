@@ -1,0 +1,23 @@
+#automatize references ports, etc..
+#to run it docker-compose up
+version: '3'
+services:
+  web:
+    build: 
+      context: .
+      #location of the dockerfile to be used
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      #volumes to reference 
+      - /app/node_modules  #create a folder called app, to not override anything
+      - .:/app
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["npm", "run", "test"]
