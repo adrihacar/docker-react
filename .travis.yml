@@ -10,3 +10,16 @@ before_install:
   #travis will suppouse that the test suit failed
 script:
   - docker run docker-react npm run test -- --coverage
+
+deploy:
+  privider: elasticbeanstalk
+  region: ""us-east-2
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-us-east-2-355467072701"     #hard drive in AWS where travis upload it
+  bucket_path: "docker-react"
+  on:
+    branch: master
+  access_key_id: $AWS_ACESS_KEY
+  secret_access_key: 
+    secure: "$AWS_SECRET_KEY"
